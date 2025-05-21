@@ -10,10 +10,10 @@ export const generatePix = async (data: any) => {
   return {
     message: "Pix Gerado com sucesso",
     chargeId: charge.id,
-    status: charge.staus,
+    status: charge.status,
     pix: {
-      qrCode: charge.pixQrCode,
-      payload: charge.pixQrCodeUrl,
+      qrCode: charge.qrCode,
+      payload: charge.payload,
     },
   };
 };
