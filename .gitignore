@@ -1,0 +1,43 @@
+# ========================
+# Geral (comum ao projeto todo)
+# ========================
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+*.tmp
+*.bak
+*.old
+
+# IDEs e editores
+.vscode/
+.idea/
+*.code-workspace
+
+# Arquivos de ambiente
+.env
+.env.*.local
+
+# Diretórios comuns de build/output
+build/
+dist/
+coverage/
+*.test
+*.out
+
+# ========================
+# Frontend (Next.js)
+# ========================
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# ========================
+# Backend (Node.js)
+# ========================
+backend/node_modules/
+backend/logs/
+backend/debug.log
+
+# Optional: se usar uploads locais no backend
+backend/uploads/
