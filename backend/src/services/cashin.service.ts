@@ -1,10 +1,20 @@
 import { createCustomer, createPixCharge } from "./asaas.service.js";
 
 export const generatePix = async (data: any) => {
-  // TODO: integrar com Asaas e salvar no Dynamo
+  const { name, cpfCnpj, email, value, description } = data;
+
+  const customer = await createCustomer(name, cpfCnpj, email);
+
+  const charge = await createPixCharge(customer.id, value, description);
+
   return {
-    message: "Pix Gerado",
-    data,
+    message: "Pix Gerado com sucesso",
+    chargeId: charge.id,
+    status: charge.staus,
+    pix: {
+      qrCode: charge.pixQrCode,
+      payload: charge.pixQrCodeUrl,
+    },
   };
 };
 

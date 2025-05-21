@@ -20,3 +20,17 @@ export const createCustomer = async (
   });
   return response.data;
 };
+
+export const createPixCharge = async (
+  customerId: string,
+  value: number,
+  description: string
+) => {
+  const response = await api.post("/payments", {
+    customer: customerId,
+    billingType: "PIX",
+    value,
+    description,
+  });
+  return response.data;
+};
