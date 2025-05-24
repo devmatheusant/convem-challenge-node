@@ -56,3 +56,39 @@ export const createPixCharge = async (
     payload, // código Pix (string copy-paste)
   };
 };
+
+export const createPixKeyEVP = async () => {
+  const response = await api.post("/pix/addressKeys", {
+    type: "EVP",
+  });
+  return response.data;
+  console.log("CHAVE EVP GERADA", response.data);
+};
+
+interface CreateTransferInput {
+  value: number;
+  pixKey: string;
+  pixKeyType: "EMAIL" | "PHONE" | "EVP" | "CPF" | "CNPJ";
+  description: string;
+  scheduleDate?: string;
+}
+
+export const createTransfer = async ({
+  value,
+  pixKey,
+  pixKeyType,
+  description,
+  scheduleDate,
+}: CreateTransferInput) => {
+  const body = {
+    value,
+    pixAddressKey: pixKey,
+    pixAddressKeyType: pixKeyType,
+    description,
+    scheduleDate,
+  };
+  console.log("Body para API Asaas:", body);
+
+  const response = await api.post("/transfers", body);
+  return response.data;
+};
