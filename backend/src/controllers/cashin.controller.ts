@@ -5,9 +5,8 @@ export const generatePix = async (req: Request, res: Response) => {
   try {
     const result = await cashInService.generatePix(req.body);
     res.status(201).json(result);
-  } catch (err) {
-    console.error("Erro ao gerar Pix", err);
-    res.status(500).json({ error: "Erro ao gerar Pix" });
+  } catch (error: any) {
+    console.error("Erro ao criar cliente:", error.response?.data || error);
   }
 };
 

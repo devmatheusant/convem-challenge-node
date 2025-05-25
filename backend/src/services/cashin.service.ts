@@ -9,7 +9,7 @@ export const generatePix = async (data: any) => {
   const charge = await createPixCharge(customer.id, value, description);
 
   await saveTransaction({
-    id: charge.id,
+    Id: charge.id,
     type: "cashin",
     status: charge.status,
     value,

@@ -1,33 +1,30 @@
-// ✅ Funções de negócio do cashout, usando asaas.service.ts por baixo
-import { createTransfer, createPixKeyEVP } from "#services/asaas.service.js";
-import { saveTransaction } from "./dynamo.service.js";
+import { sendToQueue } from "#lib/sqs.js";
+import { createTransfer } from "#services/asaas.service.js";
+import { saveTransaction } from "./dynamo.service.js"; // ✅ usar o seu serviço
 
 export const createCashOut = async (data: {
   value: number;
   description: string;
+  pixKey: string; // chave do destinatário
+  pixKeyType: "EVP" | "EMAIL" | "CPF" | "PHONE" | "CNPJ";
   scheduleDate?: string;
 }) => {
-  // 1. Criar chave EVP
-  const pixKeyData = await createPixKeyEVP();
-  const pixKey = pixKeyData.key;
-
-  // 2. Criar transferência usando a chave EVP criada
   const result = await createTransfer({
     value: data.value,
-    pixKey,
-    pixKeyType: "EVP",
+    pixKey: data.pixKey,
+    pixKeyType: data.pixKeyType,
     description: data.description,
     scheduleDate: data.scheduleDate,
   });
 
   await saveTransaction({
-    id: result.id,
+    Id: result.id,
     type: "cashout",
     status: result.status,
     value: data.value,
     description: data.description,
     createdAt: new Date().toISOString(),
-    pixKey,
+    pixKey: data.pixKey,
     scheduleDate: data.scheduleDate,
   });
 
@@ -38,8 +35,9 @@ export const createCashOut = async (data: {
   };
 };
 
-export const handleCashOutWebhook = async (payload: any) => {
-  console.log("📩 Webhook de cash out recebido (simulado):");
-  console.log(JSON.stringify(payload, null, 2));
-  // TODO: ENVIAR PARA AWS SQS
+export const handleWebhook = async (payload: any) => {
+  const QUEUE_URL = process.env.CASHOUT_QUEUE_URL!;
+  console.log("✅ Enviando CASHOUT para fila SQS:", QUEUE_URL);
+
+  await sendToQueue(QUEUE_URL, payload);
 };

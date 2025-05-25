@@ -1,6 +1,6 @@
 import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 
-const sqs = new SQSClient({ region: "us-east-1" });
+const sqs = new SQSClient({ region: "sa-east-1" });
 
 export const sendToQueue = async (queueUrl: string, payload: any) => {
   const command = new SendMessageCommand({
