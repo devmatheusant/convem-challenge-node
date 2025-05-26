@@ -94,9 +94,53 @@ cd backend/scripts
 node generateCashOut.ts
 ```
 
+## Endpoints da API
+
+#### Cash-In
+
+- POST /cashin/request/: cria um QR Code Pix
+
+- POST /cashin/webhook: recebe o webhook da Asaas e envia para a fila SQS
+
+#### Cash-Out
+
+- POST /cashout: solicita uma transferência Pix
+
+- POST /cashout/webhook: recebe o webhook da Asaas e envia para a fila SQS
+
+### Payload de Exemplo
+
+```json
+
+{
+  "value": 150,
+  "description": "Depósito de teste",
+  "cpfCnpj": "12345678909", // CPF válido de teste
+  "name": "João da Silva"
+}
+
+```
+
+
+
 ### Discussão/Conclusão 
+
 Para controlar o saldo do cliente de forma segura, é essencial implementar mecanismos de verificação de saldo antes de processar saques, garantindo que não haja saldo negativo. Além disso, é importante considerar a implementação de transações atômicas no DynamoDB para evitar condições de corrida e garantir a consistência dos dados.
 
+#### Desafios:
 
+- Sincronia de dados: evitar race conditions entre depósitos e saques.
+
+- Falhas de processamento: garantir retries em caso de falha no webhook ou na Lambda.
+
+- Validação de saldo: verificar saldo disponível antes de permitir saques.
+
+#### Soluções sugeridas:
+
+- Usar versionamento otimista no DynamoDB (ConditionExpression) para evitar sobreposição de dados.
+
+- Implementar controle de saldo centralizado em uma Lambda segura.
+
+- Monitoramento com logs e alertas para falhas nas filas.
 
 
