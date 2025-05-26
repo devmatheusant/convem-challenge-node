@@ -81,7 +81,6 @@ npm install
 npm run dev
 ```
 
-
 ## Scripts De Testes
 
 ```bash
@@ -110,20 +109,29 @@ node generateCashOut.ts
 
 ### Payload de Exemplo
 
-```json
+#### Cash-In
 
+```json
 {
   "value": 150,
   "description": "Depósito de teste",
   "cpfCnpj": "12345678909", // CPF válido de teste
   "name": "João da Silva"
 }
-
 ```
 
+#### Cash-Out
 
+```json
+{
+  "value": 100.0,
+  "description": "Saque teste",
+  "pixKey": "12345678909",
+  "pixKeyType": "CPF"
+}
+```
 
-### Discussão/Conclusão 
+### Discussão/Conclusão
 
 Para controlar o saldo do cliente de forma segura, é essencial implementar mecanismos de verificação de saldo antes de processar saques, garantindo que não haja saldo negativo. Além disso, é importante considerar a implementação de transações atômicas no DynamoDB para evitar condições de corrida e garantir a consistência dos dados.
 
@@ -143,7 +151,6 @@ Para controlar o saldo do cliente de forma segura, é essencial implementar meca
 
 - Monitoramento com logs e alertas para falhas nas filas.
 
-
 ### ✅ Status da Entrega
 
 - [x] Cash-in funcionando
@@ -153,3 +160,10 @@ Para controlar o saldo do cliente de forma segura, é essencial implementar meca
 - [x] Frontend funcionando e consumindo dados via GET
 - [x] Scripts de carga automatizados
 
+## 📬 Contato
+
+- Desenvolvedor: Matheus Santana
+
+- Email: mat.alvessantana@gmail.com
+
+- LinkedIn: https://www.linkedin.com/in/omatheussant/
