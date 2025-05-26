@@ -23,6 +23,7 @@ O projeto está organizado em um monorepo com as seguintes pastas:
 
 - Next.js
 - Tailwind CSS
+- Shadcn/ui
 
 ### Infraestrutura
 
@@ -95,6 +96,7 @@ node generateCashOut.ts
 
 ### Discussão/Conclusão 
 Para controlar o saldo do cliente de forma segura, é essencial implementar mecanismos de verificação de saldo antes de processar saques, garantindo que não haja saldo negativo. Além disso, é importante considerar a implementação de transações atômicas no DynamoDB para evitar condições de corrida e garantir a consistência dos dados.
+
 
 
 
