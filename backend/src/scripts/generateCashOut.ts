@@ -4,7 +4,7 @@ const run = async () => {
   for (let i = 0; i < 100; i++) {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/cash-out/request",
+        "https://convem-challenge-node.onrender.com/api/cash-out/request",
         {
           value: 10 + i,
           description: `Teste de saque ${i + 1}`,
