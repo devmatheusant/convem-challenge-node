@@ -21,7 +21,6 @@ export async function GET(req: NextRequest) {
       items = items.filter((item) => item.type === type);
     }
 
-    console.log(data.Items);
     return NextResponse.json(items);
   } catch (error) {
     console.error("Erro ao buscar transções", error);

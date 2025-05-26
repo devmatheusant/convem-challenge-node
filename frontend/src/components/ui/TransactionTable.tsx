@@ -55,9 +55,9 @@ export default function TransactionTable() {
             <SelectValue placeholder="Filtrar por tipo" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Todos</SelectItem>
-            <SelectItem value="cashin">Depósito</SelectItem>
-            <SelectItem value="cashout">Saque</SelectItem>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="cashin">Cash In</SelectItem>
+            <SelectItem value="cashout">Cash Out</SelectItem>
           </SelectContent>
         </Select>
       </div>
