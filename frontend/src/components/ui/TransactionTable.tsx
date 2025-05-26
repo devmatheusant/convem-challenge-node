@@ -40,7 +40,13 @@ export default function TransactionTable() {
 
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setTransactions(data));
+      .then((data) => {
+        const sorted = data.sort(
+          (a: Transaction, b: Transaction) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setTransactions(sorted);
+      });
   }, [typeFilter]);
 
   return (

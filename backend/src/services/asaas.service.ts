@@ -60,7 +60,6 @@ export const createPixKeyEVP = async () => {
     type: "EVP",
   });
   return response.data;
-  console.log("CHAVE EVP GERADA", response.data);
 };
 
 interface CreateTransferInput {
