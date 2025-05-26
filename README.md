@@ -144,3 +144,12 @@ Para controlar o saldo do cliente de forma segura, é essencial implementar meca
 - Monitoramento com logs e alertas para falhas nas filas.
 
 
+### ✅ Status da Entrega
+
+- [x] Cash-in funcionando
+- [x] Cash-out funcionando
+- [x] Webhooks redirecionados para filas SQS
+- [x] Lambdas consumindo e atualizando o DynamoDB
+- [x] Frontend funcionando e consumindo dados via GET
+- [x] Scripts de carga automatizados
+
