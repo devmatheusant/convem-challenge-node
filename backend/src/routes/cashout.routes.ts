@@ -6,7 +6,7 @@ import {
 
 const router = Router();
 
-router.post("/request", requestCashOut);
+router.post("/", requestCashOut);
 router.post("/webhook", receiveCashOutWebhook);
 
 export default router;

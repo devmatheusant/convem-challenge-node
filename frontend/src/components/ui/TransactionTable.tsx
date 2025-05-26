@@ -61,7 +61,6 @@ export default function TransactionTable() {
           </SelectContent>
         </Select>
       </div>
-
       <Table>
         <TableHeader>
           <TableRow>
@@ -88,6 +87,8 @@ export default function TransactionTable() {
           ))}
         </TableBody>
       </Table>
+
+      {transactions.length === 0 && <p>Nenhuma transação encontrada</p>}
     </div>
   );
 }

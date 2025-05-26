@@ -1,11 +1,11 @@
 import { sendToQueue } from "#lib/sqs.js";
 import { createTransfer } from "#services/asaas.service.js";
-import { saveTransaction } from "./dynamo.service.js"; // ✅ usar o seu serviço
+import { saveTransaction } from "./dynamo.service.js";
 
 export const createCashOut = async (data: {
   value: number;
   description: string;
-  pixKey: string; // chave do destinatário
+  pixKey: string;
   pixKeyType: "EVP" | "EMAIL" | "CPF" | "PHONE" | "CNPJ";
   scheduleDate?: string;
 }) => {

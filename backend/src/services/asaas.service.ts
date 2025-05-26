@@ -34,7 +34,6 @@ export const createPixCharge = async (
 ) => {
   const formattedDueDate = dueDate || new Date().toISOString().split("T")[0];
 
-  // 1. Criar a cobrança PIX
   const response = await api.post("/payments", {
     customer: customerId,
     billingType: "PIX",
@@ -45,7 +44,6 @@ export const createPixCharge = async (
 
   const charge = response.data;
 
-  // 2. Buscar o QR Code usando o endpoint correto
   const qrCodeResponse = await api.get(`/payments/${charge.id}/pixQrCode`);
   const { encodedImage, payload } = qrCodeResponse.data;
 

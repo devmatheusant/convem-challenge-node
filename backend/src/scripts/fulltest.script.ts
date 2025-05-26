@@ -43,7 +43,7 @@ const testCashOut = async (index: number) => {
 const run = async () => {
   for (let i = 1; i <= 100; i++) {
     await testCashIn(i);
-    await sleep(100); // opcional: reduz risco de rate limit da API
+    await sleep(100);
 
     await testCashOut(i);
     await sleep(100);
