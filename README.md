@@ -97,17 +97,19 @@ node generateCashOut.ts
 
 #### Cash-In
 
-- POST /cashin/request/: cria um QR Code Pix
+- POST /cash-in/request/: cria um QR Code Pix
 
-- POST /cashin/webhook: recebe o webhook da Asaas e envia para a fila SQS
+- POST /cash-in/webhook: recebe o webhook da Asaas e envia para a fila SQS
 
 #### Cash-Out
 
-- POST /cashout: solicita uma transferência Pix
+- POST /cash-out/: solicita uma transferência Pix
 
-- POST /cashout/webhook: recebe o webhook da Asaas e envia para a fila SQS
+- POST /cash-out/webhook: recebe o webhook da Asaas e envia para a fila SQS
 
-### Payload de Exemplo
+### Video Explicativo:
+
+[Assista à demo do projeto](https://jumpshare.com/embed/mNgAEpBmnTisBhFXHBA3)
 
 #### Cash-In
 
