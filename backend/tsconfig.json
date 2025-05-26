@@ -3,13 +3,11 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
+    "moduleResolution": "nodenext",
     "baseUrl": "./src",
     "paths": {
       "#*": ["*"]
-    },
-    "lib": ["ES2022"],
-    "moduleResolution": "nodenext",
-    "esModuleInterop": true
+    }
   },
   "include": ["src"],
   "exclude": ["dist"]
