@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
-import { type } from "os";
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
